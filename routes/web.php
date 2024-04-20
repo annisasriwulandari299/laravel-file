@@ -17,16 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 }); 
 
-// route basic
-Route::get('/about', function () {
-    return '<h1>halo</h1>'
-            . "Selamat datang di web app saya<br>"
-            . "laravel, emang keren.";
+Route::get('/halaman2', function () {
+    return view('animals');
 });
 
-//route basic passing data to view
-Route::get('/animals', function () {
-    $king = "lion";
-    $hewan = ["monkey", "dragonfly", "tiger", "butterfly", "crocodile"];
-    return view('animals_page', compact('king', 'hewan'));
+Route::get('/halaman3', function () {
+    return view('fruits');
+});
+
+Route::get('/about', function () {
+    $nama = "Annisa sri wulandari";
+    $jenis_kelamin = "perempuan";
+    $pendidikan_terakhir = "SMK";
+    $pekerjaan = "mahasiswa SMK";
+
+    return view('Biodata', compact('nama', 'jenis_kelamin', 'pendidikan_terakhir', 'pekerjaan'));
+
+});
+
+//PARAMETER
+Route::get('/sample/{nama}', function (Request $request, $nama) {
+    $nama2 = $nama;
+    return view ('sample',compact('nama2'));
 });
